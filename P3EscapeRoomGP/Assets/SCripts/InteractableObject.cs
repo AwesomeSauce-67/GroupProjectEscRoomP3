@@ -3,14 +3,24 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    public string requiredItemName;
+
     public void PerformAction(GameObject usedObject)
     {
-        Debug.Log(
-            usedObject.name + " was used on " + gameObject.name
-        );
+        if (usedObject.name == requiredItemName ||
+            usedObject.name == requiredItemName + "(Clone)")
+        {
+            Debug.Log("Correct item used!");
 
-        // YOUR OBJECT ACTION GOES HERE
+            // Destroy the world object
+            Destroy(gameObject);
 
-        Debug.Log(gameObject.name + " performed its action!");
+            // Destroy the held item
+            Destroy(usedObject);
+        }
+        else
+        {
+            Debug.Log("Wrong item!");
+        }
     }
 }

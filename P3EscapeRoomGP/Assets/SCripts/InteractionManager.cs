@@ -6,6 +6,7 @@ public class InteractionManager : MonoBehaviour
     public Camera mainCamera;
 
     private GameObject heldObject;
+    private Collider2D heldCollider;
 
     void Awake()
     {
@@ -15,7 +16,7 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
-        // Move held object
+        // Move held object with mouse
         if (heldObject != null)
         {
             Vector3 mousePosition =
@@ -28,7 +29,6 @@ public class InteractionManager : MonoBehaviour
             );
         }
 
-        // Handle clicks
         if (Input.GetMouseButtonDown(0))
         {
             HandleClick();
@@ -40,62 +40,57 @@ public class InteractionManager : MonoBehaviour
         Vector3 mousePosition =
             mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 position = new Vector2(
-            mousePosition.x,
-            mousePosition.y
-        );
+        Vector2 position = mousePosition;
 
+        // Find all objects under the mouse
         Collider2D[] hits = Physics2D.OverlapPointAll(position);
 
-        InteractableObject clickedTarget = null;
-
-        // Find an object underneath the cursor
-        foreach (Collider2D hit in hits)
+        if (hits.Length == 0)
         {
-            InteractableObject candidate =
-                hit.GetComponentInParent<InteractableObject>();
-
-            if (candidate == null)
-                continue;
-
-            // Ignore the object currently being held
-            if (heldObject != null &&
-                candidate.gameObject == heldObject)
-                continue;
-
-            clickedTarget = candidate;
-            break;
+            Debug.Log("Nothing clicked!");
+            return;
         }
 
         // PICK UP
         if (heldObject == null)
         {
-            if (clickedTarget == null)
-                return;
-
-            if (clickedTarget.CompareTag("Interactable"))
+            foreach (Collider2D hit in hits)
             {
-                heldObject = clickedTarget.gameObject;
-                Debug.Log("PICKED UP: " + heldObject.name);
+                if (hit.CompareTag("Interactable"))
+                {
+                    heldObject = hit.gameObject;
+                    heldCollider = heldObject.GetComponent<Collider2D>();
+
+                    Debug.Log("PICKED UP: " + heldObject.name);
+                    return;
+                }
             }
 
             return;
         }
 
-        // USE HELD OBJECT ON TARGET
-        if (clickedTarget != null)
+        // FIND TARGET, IGNORING HELD ITEM
+        foreach (Collider2D hit in hits)
         {
-            Debug.Log("TARGET FOUND: " + clickedTarget.name);
+            if (hit.gameObject == heldObject)
+                continue;
 
-            GameObject itemToDestroy = heldObject;
+            InteractableObject target =
+                hit.GetComponentInParent<InteractableObject>();
 
-            clickedTarget.PerformAction(itemToDestroy);
+            if (target != null && target.gameObject != heldObject)
+            {
+                Debug.Log("Using " + heldObject.name + " on " + target.name);
 
-            heldObject = null;
+                GameObject itemToUse = heldObject;
 
-            Destroy(itemToDestroy);
+                heldObject = null;
+                heldCollider = null;
 
-            Debug.Log("ITEM DESTROYED!");
+                target.PerformAction(itemToUse);
+
+                return;
+            }
         }
     }
 }
