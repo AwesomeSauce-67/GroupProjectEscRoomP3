@@ -47,7 +47,6 @@ public class InteractionManager : MonoBehaviour
 
         if (hits.Length == 0)
         {
-            Debug.Log("Nothing clicked!");
             return;
         }
 
