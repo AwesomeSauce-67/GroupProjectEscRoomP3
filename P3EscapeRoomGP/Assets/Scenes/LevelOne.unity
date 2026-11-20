@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -525.99994, y: 292.29996}
+  m_AnchoredPosition: {x: -334.99994, y: 333.29996}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &125651047
@@ -822,7 +822,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10000
   m_TargetDisplay: 0
 --- !u!224 &364423611
 RectTransform:
@@ -975,8 +975,8 @@ Transform:
   m_GameObject: {fileID: 467930984}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0667698, y: -1.94678, z: 0}
-  m_LocalScale: {x: 1.4904903, y: 1.4904903, z: 1.4904903}
+  m_LocalPosition: {x: -2.0667698, y: -1.9467798, z: 0}
+  m_LocalScale: {x: 1.4904902, y: 1.4904902, z: 1.4904902}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1297684351}
@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 768712452}
   - component: {fileID: 768712451}
   - component: {fileID: 768712454}
-  - component: {fileID: 768712450}
+  - component: {fileID: 768712455}
   - component: {fileID: 768712453}
   m_Layer: 0
   m_Name: VentCover
@@ -1138,19 +1138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &768712450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768712449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f045632eb0ba394282664086b46be00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpriteClickSound
-  clickSound: {fileID: 0}
 --- !u!212 &768712451
 SpriteRenderer:
   serializedVersion: 2
@@ -1219,8 +1206,8 @@ Transform:
   m_GameObject: {fileID: 768712449}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.52953, y: -1.19358, z: 0}
-  m_LocalScale: {x: 1.7664602, y: 2.2257118, z: 1}
+  m_LocalPosition: {x: 5.43, y: -1.19358, z: 0}
+  m_LocalScale: {x: 1.7664601, y: 2.2257118, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1297684351}
@@ -1284,6 +1271,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.51, y: 0.87}
   m_EdgeRadius: 0
+--- !u!114 &768712455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768712449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4c12d4ac511674aa502bf827c89cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnotherScript
+  soundManager: {fileID: 1379361938}
+  soundName: Vent
 --- !u!1 &961576123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -526, y: 325}
+  m_AnchoredPosition: {x: -335, y: 366}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137137341
@@ -1791,14 +1792,63 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 768712452}
   - {fileID: 2072871090}
+  - {fileID: 768712452}
   - {fileID: 1289412454}
   - {fileID: 467930986}
   - {fileID: 1760587133}
   - {fileID: 235745198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1379361936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379361937}
+  - component: {fileID: 1379361938}
+  m_Layer: 0
+  m_Name: SoundPlayers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379361937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379361936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.64415, y: 1.06751, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1379361938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379361936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f045632eb0ba394282664086b46be00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClickSound
+  sounds:
+  - soundName: Poster
+    audioClip: {fileID: 8300000, guid: 13e6952cecd7b3e4a8637e9721b35eb0, type: 3}
+  - soundName: Vent
+    audioClip: {fileID: 8300000, guid: 5905e1c180241e6408a5d1582d80fddc, type: 3}
 --- !u!1 &1499921112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +2008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.8957, y: -0.000030518}
+  m_AnchoredPosition: {x: 1.1, y: -0.000030518}
   m_SizeDelta: {x: 880.5903, y: 798}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757901210
@@ -2027,8 +2077,8 @@ Transform:
   m_GameObject: {fileID: 1760587132}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.71723, y: -1.46978, z: 0}
-  m_LocalScale: {x: 0.097696, y: 0.114005476, z: 1}
+  m_LocalPosition: {x: 5.71723, y: -1.4697798, z: 0}
+  m_LocalScale: {x: 0.09769599, y: 0.114005476, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1297684351}
@@ -2315,8 +2365,8 @@ GameObject:
   - component: {fileID: 2072871090}
   - component: {fileID: 2072871089}
   - component: {fileID: 2072871092}
-  - component: {fileID: 2072871088}
-  - component: {fileID: 2072871091}
+  - component: {fileID: 2072871093}
+  - component: {fileID: 2072871094}
   m_Layer: 0
   m_Name: Poster
   m_TagString: Untagged
@@ -2324,19 +2374,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2072871088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072871087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f045632eb0ba394282664086b46be00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpriteClickSound
-  clickSound: {fileID: 8300000, guid: 13e6952cecd7b3e4a8637e9721b35eb0, type: 3}
 --- !u!212 &2072871089
 SpriteRenderer:
   serializedVersion: 2
@@ -2405,24 +2442,12 @@ Transform:
   m_GameObject: {fileID: 2072871087}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8138301, y: 2.29402, z: 0}
-  m_LocalScale: {x: 1.8195759, y: 2.3219016, z: 1}
+  m_LocalPosition: {x: 2.74, y: 2.29402, z: 0}
+  m_LocalScale: {x: 1.8195758, y: 2.3219016, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1297684351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2072871091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072871087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a21965fb290907849a10f40b9a737daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeleteSpriteOnClick
 --- !u!61 &2072871092
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2469,6 +2494,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.93, y: 1.14}
   m_EdgeRadius: 0
+--- !u!114 &2072871093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072871087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb4c12d4ac511674aa502bf827c89cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnotherScript
+  soundManager: {fileID: 1379361938}
+  soundName: Poster
+--- !u!114 &2072871094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072871087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21965fb290907849a10f40b9a737daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeleteSpriteOnClick
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2477,6 +2528,7 @@ SceneRoots:
   - {fileID: 393555654}
   - {fileID: 1858785477}
   - {fileID: 961576124}
+  - {fileID: 364423611}
   - {fileID: 1297684351}
   - {fileID: 1507822730}
-  - {fileID: 364423611}
+  - {fileID: 1379361937}

@@ -1,46 +1,52 @@
-
 using UnityEngine;
 
-public class SpriteClickSound : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    public AudioClip clickSound;
+    [System.Serializable]
+    public class SoundEntry
+    {
+        public string soundName;
+        public AudioClip audioClip;
+    }
+
+    public SoundEntry[] sounds;
+
     private AudioSource audioSource;
-    private Camera mainCamera;
 
     void Awake()
     {
-        mainCamera = Camera.main;
-
         audioSource = GetComponent<AudioSource>();
 
         if (audioSource == null)
-        {
             audioSource = gameObject.AddComponent<AudioSource>();
-        }
 
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0f;
         audioSource.volume = 1f;
     }
 
-    void Update()
+    public void PlaySound(string soundName)
     {
-        if (Input.GetMouseButtonDown(0))
+        Debug.Log("Looking for sound: " + soundName);
+
+        foreach (SoundEntry sound in sounds)
         {
-            Vector2 mousePosition =
-                mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-            RaycastHit2D hit =
-                Physics2D.Raycast(mousePosition, Vector2.zero);
-
-            if (hit.collider != null &&
-                hit.collider.gameObject == gameObject)
+            if (sound.soundName.Trim().ToLower() == soundName.Trim().ToLower())
             {
-                if (clickSound != null)
+                if (sound.audioClip != null)
                 {
-                    audioSource.PlayOneShot(clickSound);
+                    audioSource.PlayOneShot(sound.audioClip);
+                    Debug.Log("Playing sound: " + sound.soundName);
                 }
+                else
+                {
+                    Debug.LogWarning("Audio clip is missing!");
+                }
+
+                return;
             }
         }
+
+        Debug.LogWarning("Could not find sound: " + soundName);
     }
 }
