@@ -1129,7 +1129,6 @@ GameObject:
   - component: {fileID: 768712452}
   - component: {fileID: 768712451}
   - component: {fileID: 768712454}
-  - component: {fileID: 768712455}
   - component: {fileID: 768712453}
   m_Layer: 0
   m_Name: VentCover
@@ -1225,6 +1224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
   requiredItemName: Screwdriver
+  soundManager: {fileID: 1379361938}
+  soundName: Vent
 --- !u!61 &768712454
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1271,20 +1272,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.51, y: 0.87}
   m_EdgeRadius: 0
---- !u!114 &768712455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768712449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb4c12d4ac511674aa502bf827c89cba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnotherScript
-  soundManager: {fileID: 1379361938}
-  soundName: Vent
 --- !u!1 &961576123
 GameObject:
   m_ObjectHideFlags: 0
